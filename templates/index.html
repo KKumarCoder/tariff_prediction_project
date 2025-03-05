@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tariff Impact Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Tariff Impact Prediction</h1>
+        {% if error %}
+        <p class="error">{{ error }}</p>
+        {% endif %}
+        <form action="/predict" method="post">
+            <label>Country:</label>
+            <input type="text" name="country" required>
+
+            <label>Product Category:</label>
+            <input type="text" name="product_category" required>
+
+            <label>Tariff Percentage:</label>
+            <input type="number" step="0.01" name="tariff_percentage" required>
+
+            <label>Export Loss (in million $):</label>
+            <input type="number" step="0.01" name="export_loss" required>
+
+            <label>GDP Impact (%):</label>
+            <input type="number" step="0.01" name="gdp_impact" required>
+
+            <label>Employment Loss (in thousands):</label>
+            <input type="number" name="employment_loss" required>
+
+            <button type="submit">Predict Impact Level</button>
+        </form>
+    </div>
+</body>
+</html>
+
